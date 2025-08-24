@@ -1,6 +1,8 @@
 # .github/workflows/main.yml
 
-on: push
+on:
+  schedule:
+  - cron: '0 12 * * *' # every day at noon
 
 jobs:
   backfill-commits:
@@ -12,6 +14,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GIT_EMAIL: lucasff.guanabara@gmail.com # replace me
-        MAX_DAYS: 23
+        MAX_DAYS: 1
         MIN_COMMITS_PER_DAY: 1
-        MAX_COMMITS_PER_DAY: 14
+        MAX_COMMITS_PER_DAY: 7
